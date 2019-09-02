@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body {padding: 30px; position: relative}
+        
+    .card.customClass,
+.card.customClass .card-header,
+.panel.customClass {
+  background-color: #5bc0de;
+  color: #fff;
+}
+.panel.customClass .panel-body {
+  background-color: #337aa7;
+}

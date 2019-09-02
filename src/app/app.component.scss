@@ -1,0 +1,16 @@
+$grid-gutter: 10px; // espaçamento entre as colunas
+$grid-columns: 12; // Quantidade de colunas
+$grid-max: 980px; // Tamanho do container
+
+// Código básico das colunas do grid
+[class*="grid-"]{
+  float: left;
+  padding: 0 $grid-gutter;
+  margin-bottom: 20px;
+}
+
+@for $i from 1 through $grid-columns {
+  .grid-#{$i}{
+    width: 100% / $grid-columns * $i
+    }
+}

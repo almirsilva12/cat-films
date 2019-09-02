@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AppService } from './app.service';
+import { Genero } from './classes/genero';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cat-films';
+  genres = {}
+  constructor(public appService: AppService) {
+    this.loadGenres();
+  }
+
+  loadGenres() {
+    return this.appService.getGenres().subscribe((data: Genero[]) => {
+      this.genres = data.genres;
+      console.log(data);
+    })
+  }
 }
