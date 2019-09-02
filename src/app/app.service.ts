@@ -20,8 +20,8 @@ export class AppService {
     })
   }
   
-  getGenres(): Observable<Genero[]> {
-    return this.http.get<Genero[]>(this.url + 'genre/movie/list?' + this.api_key);
+  getGenres(language): Observable<Genero[]> {
+    return this.http.get<Genero[]>(this.url + 'genre/movie/list?' + this.api_key + '&language=' + language);
   }
 
   getMovies(): Observable<Filmes[]> {

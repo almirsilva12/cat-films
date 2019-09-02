@@ -13,11 +13,4 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class MainPageModule { 
 
-  getEmployees(): Observable<Employee> {
-    return this.http.get<Employee>(this.apiURL + '/employees')
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }
 }

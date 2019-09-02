@@ -15,8 +15,8 @@ export class AppComponent {
   }
 
   loadGenres() {
-    return this.appService.getGenres().subscribe((data: Genero[]) => {
-      this.genres = data.genres;
+    return this.appService.getGenres('pt-BR').subscribe((data: Genero[]) => {
+      this.genres = data;
       console.log(data);
     })
   }
