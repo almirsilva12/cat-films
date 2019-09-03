@@ -5,7 +5,7 @@ import { Observable  } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MainPageService {
+export class MovieListService {
 
   url = 'https://api.themoviedb.org/3/';
   apiKey = 'api_key=c6840fc358a1b989c04221e823e583d3';

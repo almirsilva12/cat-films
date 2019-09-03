@@ -11,6 +11,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/ngx-bootstrap';
     BsDropdownModule
   ]
 })
-export class MainPageModule {
+export class MoviePageModule {
 
 }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MainPageService } from './main-page.service';
+import { MovieListService } from './movie-list.service';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: 'app-movie-list',
+  templateUrl: './movie-list.component.html',
+  styleUrls: ['./movie-list.component.scss']
 })
-export class MainPageComponent implements OnInit {
-  constructor(public mainPageService: MainPageService) {
+export class MovieListComponent implements OnInit {
+  constructor(public movieListService: MovieListService) {
     this.loadGenres();
   }
   imgUrl = 'https://image.tmdb.org/t/p/w780';
@@ -18,7 +18,7 @@ export class MainPageComponent implements OnInit {
    }
 
   loadGenres() {
-    return this.mainPageService.getGenres('pt-BR').subscribe((data: any) => {
+    return this.movieListService.getGenres('pt-BR').subscribe((data: any) => {
       this.genres = data.genres;
       this.genres.forEach(element => {
         this.loadMoviesByGenre(element.id);
@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
   }
 
   loadMoviesByGenre(genre) {
-    return this.mainPageService.getMoviesByGenre('pt-BR', 1, genre).subscribe((data) => {
+    return this.movieListService.getMoviesByGenre('pt-BR', 1, genre).subscribe((data) => {
       const movies = data.results;
       console.log(movies);
       movies.forEach(mv => {
