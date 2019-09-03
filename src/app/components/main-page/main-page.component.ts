@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from 'src/app/app.service';
-import { Genero } from 'src/app/classes/genero';
-import { Filmes } from 'src/app/classes/filmes';
 import { MainPageService } from './main-page.service';
 
 @Component({
@@ -13,23 +10,32 @@ export class MainPageComponent implements OnInit {
   constructor(public mainPageService: MainPageService) {
     this.loadGenres();
   }
-   
-  genres = {};
-  movies = {};
+  imgUrl = 'https://image.tmdb.org/t/p/w780';
+  genres = [];
 
   ngOnInit() {
-  }
+    console.log(this.genres);
+   }
 
   loadGenres() {
-    return this.mainPageService.getGenres('pt-BR').subscribe((data) => {
-      this.genres = data.genres;        
+    return this.mainPageService.getGenres('pt-BR').subscribe((data: any) => {
+      this.genres = data.genres;
+      this.genres.forEach(element => {
+        this.loadMoviesByGenre(element.id);
+      });
     });
-  };
-  
-  loadMoviesByGenre(genre: number) {
+  }
+
+  loadMoviesByGenre(genre) {
     return this.mainPageService.getMoviesByGenre('pt-BR', 1, genre).subscribe((data) => {
-      this.movies = data.results;
-      console.log(this.movies);
+      const movies = data.results;
+      console.log(movies);
+      movies.forEach(mv => {
+        mv.poster_path = this.imgUrl + mv.poster_path;
+      });
+      const item = this.genres.find(x => x.id === genre);
+      item.movies = movies;
+      console.log(item.movies);
     });
-  };
-};
+  }
+}

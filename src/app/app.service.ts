@@ -10,5 +10,5 @@ import { Genero } from './classes/genero';
 export class AppService {
 
   constructor(private http: HttpClient) { }
-  
+
 }

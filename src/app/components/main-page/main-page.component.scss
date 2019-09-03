@@ -1,0 +1,34 @@
+
+
+.movie-card {
+    width: 400px;
+}
+
+.movie-poster {
+    max-width: 200px;
+}
+
+.img-sized {
+    width:100%;
+    height: 300px;
+}
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  
+    .card {
+      display: inline-block;
+      width: 12%;
+      max-width: 100%;
+    }
+
+    .card-text {
+        word-wrap: break-word;
+    }
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
+  }

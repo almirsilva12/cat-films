@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpHeaders } from '@angular/common/http'
-import { BsDropdownModule } from 'ngx-bootstrap/ngx-bootstrap'
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { BsDropdownModule } from 'ngx-bootstrap/ngx-bootstrap';
 
 @NgModule({
   declarations: [],
@@ -11,6 +11,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/ngx-bootstrap'
     BsDropdownModule
   ]
 })
-export class MainPageModule { 
+export class MainPageModule {
 
 }

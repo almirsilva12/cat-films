@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
   constructor(public navbarService: NavbarService) {
     this.loadGenres();
   }
-   
+
   genres = {};
 
   ngOnInit() {
@@ -20,6 +20,6 @@ export class NavbarComponent implements OnInit {
     return this.navbarService.getGenres('pt-BR').subscribe((data) => {
       this.genres = data.genres;
       console.log(this.genres);
-    })
+    });
   }
 }
