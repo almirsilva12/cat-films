@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AppService } from './app.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http'
-import { Observable, throwError  } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { BsDropdownModule } from 'ngx-bootstrap/ngx-bootstrap'
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDropdownModule
   ]
 })
 export class MainPageModule { 
