@@ -10,23 +10,32 @@ export class MainPageComponent implements OnInit {
   constructor(public mainPageService: MainPageService) {
     this.loadGenres();
   }
-
+  imgUrl = 'https://image.tmdb.org/t/p/w780';
   genres = [];
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.genres);
+   }
 
   loadGenres() {
     return this.mainPageService.getGenres('pt-BR').subscribe((data: any) => {
       this.genres = data.genres;
       this.genres.forEach(element => {
-        element.movies = this.loadMoviesByGenre(element.id);
+        this.loadMoviesByGenre(element.id);
       });
     });
   }
 
-  loadMoviesByGenre(genre: number) {
+  loadMoviesByGenre(genre) {
     return this.mainPageService.getMoviesByGenre('pt-BR', 1, genre).subscribe((data) => {
-      return data.results;
+      const movies = data.results;
+      console.log(movies);
+      movies.forEach(mv => {
+        mv.poster_path = this.imgUrl + mv.poster_path;
+      });
+      const item = this.genres.find(x => x.id === genre);
+      item.movies = movies;
+      console.log(item.movies);
     });
   }
 }
