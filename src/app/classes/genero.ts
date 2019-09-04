@@ -1,7 +1,8 @@
-import { Filmes } from './filmes';
+import { Filme } from './filme';
 
 export class Genero {
     id: number;
     name: string;
-    movies: Filmes[];
+    movies: Filme[];
+    pageNumber: number;
 }

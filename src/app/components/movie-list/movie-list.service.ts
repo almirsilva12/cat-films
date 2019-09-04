@@ -23,7 +23,7 @@ export class MovieListService {
 
   getMoviesByGenre(language, page, genre): Observable<any> {
     return this.http.get<any[]>
-    (this.url + 'discover/movie?' + this.apiKey + '&language=' + language + '$page=' + page + '&with_genres=' + genre);
+    (this.url + 'discover/movie?' + this.apiKey + '&language=' + language + '&page=' + page + '&with_genres=' + genre);
   }
 }
 

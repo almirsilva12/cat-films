@@ -1,4 +1,4 @@
-export class Filmes {
+export class Filme {
     popularity: number;
     poster_path: string;
     id: number;
