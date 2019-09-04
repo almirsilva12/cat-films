@@ -1,7 +1,7 @@
-import { Filmes } from './filmes';
+import { Filme } from './filme';
 
-describe('Filmes', () => {
+describe('Filme', () => {
   it('should create an instance', () => {
-    expect(new Filmes()).toBeTruthy();
+    expect(new Filme()).toBeTruthy();
   });
 });

@@ -1,1 +1,50 @@
-<p>movie-details works!</p>
+<div
+  class="modal fade"
+  id="movieDetail"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="movieDetailLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ movie.title }}</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row col-md-12">
+          <img
+            class="movie-poster col-sm-5 col-md-5 col-ls-5"
+            [src]="movie.poster_path"
+          />
+          <br />
+          <h5 class="modal-title"></h5>
+          <div class="col-sm-7 col-md-7 col-ls-7">
+            <h4>Sinopse</h4>
+            {{ movie.overview }}
+            <br />
+            <br />
+            <h4>Nota</h4>
+            <rating
+              [max]="10"
+              [readonly]="true"
+              value="movie.vote_average"
+            ></rating>
+            <br />
+            <br />
+            <h4>Data de lançamento</h4>
+            <span>{{ movie.release_date | date: "dd/MM/yyyy" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,9 +6,12 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { AppService } from './app.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RatingModule } from 'ngx-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     BrowserModule,
     AppRoutingModule,
     AccordionModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule,
+    RatingModule,
+    FormsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
