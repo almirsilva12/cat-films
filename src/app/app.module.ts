@@ -8,12 +8,14 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { AppService } from './app.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
-    NavbarComponent
+    NavbarComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserAnimationsModule,

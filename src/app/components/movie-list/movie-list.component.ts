@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieListService } from './movie-list.service';
+import { Genero } from 'src/app/classes/genero';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,12 +11,12 @@ export class MovieListComponent implements OnInit {
   constructor(public movieListService: MovieListService) {
     this.loadGenres();
   }
+  nullImgUrl = 'assets/img/no-poster.jpg';
   imgUrl = 'https://image.tmdb.org/t/p/w780';
-  genres = [];
+  genres: Genero[];
 
   ngOnInit() {
-    console.log(this.genres);
-   }
+  }
 
   loadGenres() {
     return this.movieListService.getGenres('pt-BR').subscribe((data: any) => {
@@ -31,7 +32,11 @@ export class MovieListComponent implements OnInit {
       const movies = data.results;
       console.log(movies);
       movies.forEach(mv => {
-        mv.poster_path = this.imgUrl + mv.poster_path;
+        if (mv.poster_path === null) {
+          mv.poster_path = this.nullImgUrl;
+        } else {
+          mv.poster_path = this.imgUrl + mv.poster_path;
+        }
       });
       const item = this.genres.find(x => x.id === genre);
       item.movies = movies;

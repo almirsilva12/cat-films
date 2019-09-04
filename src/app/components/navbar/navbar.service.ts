@@ -20,8 +20,8 @@ export class NavbarService {
     })
   };
 
-  getGenres(language): Observable<Genero[]> {
-    return this.http.get<Genero[]>(this.url + 'genre/movie/list?' + this.apiKey + '&language=' + language);
+  getGenres(language): Observable<any> {
+    return this.http.get<any>(this.url + 'genre/movie/list?' + this.apiKey + '&language=' + language);
   }
 }
 
