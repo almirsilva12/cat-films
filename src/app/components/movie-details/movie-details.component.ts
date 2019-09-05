@@ -1,3 +1,4 @@
+import { NavbarService } from './../navbar/navbar.service';
 import { MovieDetailsService } from './movie-details.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Filme } from 'src/app/classes/filme';
@@ -12,9 +13,12 @@ export class MovieDetailsComponent implements OnInit {
 
   movie: Filme;
   movieSubscription: Subscription;
+  fontSize = 15;
+  fontSizeSubscription: Subscription;
 
-  constructor(private movieDetailsService: MovieDetailsService) {
+  constructor(private movieDetailsService: MovieDetailsService, public navbarService: NavbarService) {
     this.movieSubscription = this.movieDetailsService.getMovie().subscribe(mv => this.movie = mv);
+    this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(mv => this.fontSize = mv);
   }
 
   ngOnInit() {

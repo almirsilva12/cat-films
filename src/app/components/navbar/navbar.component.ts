@@ -1,7 +1,8 @@
 import { MovieDetailsService } from './../movie-details/movie-details.service';
 import { Filme } from 'src/app/classes/filme';
-import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarService } from './navbar.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +22,7 @@ export class NavbarComponent implements OnInit {
   resultSearch = false;
   movieDetailed: Filme;
   fontSize = 15;
-  @ViewChildren('movieTitle') movieTitle: QueryList<any>;
+  fontSizeSubscription: Subscription;
 
   ngOnInit() {
   }
@@ -37,6 +38,7 @@ export class NavbarComponent implements OnInit {
 
   changeFontSize(op) {
     op === '+' ? this.fontSize++ : this.fontSize--;
+    this.navbarService.sendFontSize(this.fontSize);
   }
 
   loadGenres() {

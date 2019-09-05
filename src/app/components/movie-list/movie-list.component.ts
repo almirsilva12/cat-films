@@ -1,8 +1,10 @@
+import { NavbarService } from './../navbar/navbar.service';
 import { MovieDetailsService } from './../movie-details/movie-details.service';
 import { Filme } from './../../classes/filme';
 import { Component, OnInit } from '@angular/core';
 import { MovieListService } from './movie-list.service';
 import { Genero } from 'src/app/classes/genero';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
@@ -16,9 +18,13 @@ export class MovieListComponent implements OnInit {
   genres: Genero[];
   movieDetailed: Filme;
   currentDate = new Date();
+  fontSize = 15;
+  fontSizeSubscription: Subscription;
 
-  constructor(public movieListService: MovieListService, public movieDetailsService: MovieDetailsService) {
+  constructor(
+    public movieListService: MovieListService, public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
     this.loadGenres();
+    this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(mv => this.fontSize = mv);
   }
 
   ngOnInit() {

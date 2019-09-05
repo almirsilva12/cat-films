@@ -29,7 +29,7 @@
           <h5 class="modal-title"></h5>
           <div class="col-sm-8 col-md-8 col-ls-8">
             <h4>Sinopse</h4>
-            <p class="movie-text">{{ movie?.overview }}</p>
+            <p class="movie-text" [ngStyle]="{'font-size': fontSize + 'px'}">{{ movie?.overview }}</p>
             <br />
             <br />
             <h4>Nota</h4>
@@ -41,7 +41,7 @@
             <br />
             <br />
             <h4>Data de lançamento</h4>
-            <span class="movie-text">{{ movie?.release_date | date: "dd/MM/yyyy" }}</span>
+            <span class="movie-text" [ngStyle]="{'font-size': fontSize + 'px'}">{{ movie?.release_date | date: "dd/MM/yyyy" }}</span>
           </div>
         </div>
       </div>
