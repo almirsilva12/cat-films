@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="grid-body">
-        <div class=" col-sm-12 col-md-12 col-ls-12">
-            <div *ngFor="let genre of genres">
-                <h2>
-                    {{genre.name}}
-                </h2>
-                <div class="card-group">
-                    <div class="scrolling-wrapper" infiniteScroll [infiniteScrollUpDistance]="2" [scrollWindow]="false" [infiniteScrollThrottle]="600" [horizontal]="true" (scrolled)="onScroll(genre)">
-                        <div *ngFor="let movie of genre.movies" class="card">
-                            <img class="card-img-top img-sized" [src]="movie.poster_path">
-                            <div class="card-body">
-                                <h5 class="card-title">{{movie.title}}</h5>
-                                <a href="#" class="card-link" data-toggle="modal" data-target="#movieDetail" (click)="detailMovie(movie)">Detalhes</a>
-                            </div>
-                        </div>
-                    </div>
+      <div class=" col-sm-12 col-md-12 col-ls-12">
+        <div *ngFor="let genre of genres">
+          <h2>
+            {{ genre.name }}
+          </h2>
+          <div class="card-group">
+            <div
+              class="scrolling-wrapper"
+              infiniteScroll
+              [infiniteScrollUpDistance]="2"
+              [scrollWindow]="false"
+              [infiniteScrollThrottle]="600"
+              [horizontal]="true"
+              (scrolled)="onScroll(genre)"
+            >
+              <div *ngFor="let movie of genre.movies" class="card">
+                <img class="card-img-top img-sized" [src]="movie.poster_path" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ movie.title }}</h5>
+                  <a
+                    href="#"
+                    class="card-link"
+                    data-toggle="modal"
+                    data-target="#movieDetail"
+                    (click)="detailMovie(movie)"
+                    >Detalhes</a
+                  >
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
-<app-movie-details [movie]="movieDetailed"></app-movie-details>
+  </body>
+</html>
+

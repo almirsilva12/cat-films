@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Genero } from 'src/app/classes/genero';
-
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +18,13 @@ export class NavbarService {
     })
   };
 
-  getGenres(language): Observable<any> {
+  getGenres(language: string): Observable<any> {
     return this.http.get<any>(this.url + 'genre/movie/list?' + this.apiKey + '&language=' + language);
+  }
+
+  getMoviesBySearch(query: string, language: string, page: number): Observable<any> {
+    return this.http.get<any>(this.url + 'search/movie?' + this.apiKey + '&query=' +
+    query + '&language=' + language + '&page=' + page + '&include_adult=false');
   }
 }
 

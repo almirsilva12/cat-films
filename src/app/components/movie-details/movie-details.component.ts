@@ -1,5 +1,7 @@
+import { MovieDetailsService } from './movie-details.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Filme } from 'src/app/classes/filme';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movie-details',
@@ -8,11 +10,18 @@ import { Filme } from 'src/app/classes/filme';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  constructor() { }
+  movie: Filme;
+  movieSubscription: Subscription;
 
-  @Input() movie: Filme;
+  constructor(private movieDetailsService: MovieDetailsService) {
+    this.movieSubscription = this.movieDetailsService.getMovie().subscribe(mv => this.movie = mv);
+  }
 
   ngOnInit() {
-    console.log(this.movie);
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy() {
+    this.movieSubscription.unsubscribe();
   }
 }

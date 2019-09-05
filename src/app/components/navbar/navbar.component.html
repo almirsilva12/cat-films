@@ -1,31 +1,92 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 </head>
-        
+
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand">Catálogo de filmes</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Ocultar filtros">
+  <div class="col-md-12">
+    <div class="row">
+      <a class="navbar-brand">Catálogo de filmes</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Ocultar filtros"
+      >
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarContent">
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="genreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Classificar por gênero
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="genreDropdown">
-                    <li *ngFor="let genre of genres">
-                        <a class="dropdown-item" href="#">{{genre.name}}</a>
-                    </li>
-                </ul>
-            </li>
+          <li class="float-right">
+            <form class="form-inline">
+              <input
+                class="form-control mr-sm-2"
+                [(ngModel)]="search"
+                [ngModelOptions]="{ standalone: true }"
+                type="search"
+                placeholder="Pesquisar por nome"
+                aria-label="search"
+              />
+              <button
+                class="btn btn-outline-success my-2 my-sm-0"
+                (click)="searchMovie()"
+              >
+                Pesquisar
+              </button>
+            </form>
+          </li>
         </ul>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar por nome" aria-label="search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
+      </div>
     </div>
+    <div class="row">
+      <div
+        id="collapseBasic"
+        class="search-results"
+        [collapse]="!resultSearch"
+        [isAnimated]="true"
+      >
+        <br />
+        <h4>
+          Resultados de pesquisa para: {{ search }}
+          <button type="button" class="close" (click)="closeSearch()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h4>
+
+        <div class="card-group">
+          <div
+            class="scrolling-wrapper"
+            infiniteScroll
+            [infiniteScrollUpDistance]="2"
+            [scrollWindow]="false"
+            [infiniteScrollThrottle]="600"
+            [horizontal]="true"
+          >
+            <div *ngFor="let movie of searchedMovies" class="card">
+              <img class="card-img-top img-sized" [src]="movie.poster_path" />
+              <div class="card-body">
+                <a
+                  href="#"
+                  class="card-text"
+                  data-toggle="modal"
+                  data-target="#movieDetail"
+                  (click)="detailMovie(movie)"
+                  >{{ movie.title }}</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
+

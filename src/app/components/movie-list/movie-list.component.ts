@@ -1,3 +1,4 @@
+import { MovieDetailsService } from './../movie-details/movie-details.service';
 import { Filme } from './../../classes/filme';
 import { Component, OnInit } from '@angular/core';
 import { MovieListService } from './movie-list.service';
@@ -14,8 +15,9 @@ export class MovieListComponent implements OnInit {
   imgUrl = 'https://image.tmdb.org/t/p/w780';
   genres: Genero[];
   movieDetailed: Filme;
+  currentDate = new Date();
 
-  constructor(public movieListService: MovieListService) {
+  constructor(public movieListService: MovieListService, public movieDetailsService: MovieDetailsService) {
     this.loadGenres();
   }
 
@@ -28,7 +30,7 @@ export class MovieListComponent implements OnInit {
   }
 
   detailMovie(movie) {
-    this.movieDetailed = movie;
+    this.movieDetailsService.sendMovie(movie);
   }
 
   loadGenres() {
@@ -43,9 +45,10 @@ export class MovieListComponent implements OnInit {
 
   loadMoviesByGenre(page, genre) {
     let movies = [];
-    return this.movieListService.getMoviesByGenre('pt-BR', page, genre).subscribe((data) => {
+    const stringDate = this.currentDate.getFullYear().toString() + '-' +
+    this.dateFormatter(this.currentDate.getMonth().toString()) + '-' + this.dateFormatter(this.currentDate.getDay().toString());
+    return this.movieListService.getMoviesByGenre('pt-BR', page, genre, stringDate).subscribe((data) => {
       movies = data.results;
-      console.log(movies);
       movies.forEach(mv => {
         if (mv.poster_path === null) {
           mv.poster_path = this.nullImgUrl;
@@ -61,7 +64,14 @@ export class MovieListComponent implements OnInit {
       } else {
         item.movies = movies;
       }
-      console.log(item.movies);
     });
+  }
+
+  dateFormatter(date) {
+    if (date.length === 1) {
+      return '0' + date;
+    } else {
+      return date;
+    }
   }
 }
