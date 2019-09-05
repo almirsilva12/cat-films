@@ -24,26 +24,36 @@
         <span class="icon-bar"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="float-right">
-            <form class="form-inline">
-              <input
-                class="form-control mr-sm-2"
-                [(ngModel)]="search"
-                [ngModelOptions]="{ standalone: true }"
-                type="search"
-                placeholder="Pesquisar por nome"
-                aria-label="search"
-              />
-              <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                (click)="searchMovie()"
-              >
-                Pesquisar
-              </button>
-            </form>
-          </li>
-        </ul>
+        <form class="form-inline">
+          <input
+            class="form-control mr-sm-2"
+            [(ngModel)]="search"
+            [ngModelOptions]="{ standalone: true }"
+            type="search"
+            placeholder="Pesquisar por nome"
+            aria-label="search"
+          />
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            (click)="searchMovie()"
+          >
+            Pesquisar
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="changeFontSize('+')"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="changeFontSize('-')"
+          >
+            -
+          </button>
+        </form>
       </div>
     </div>
     <div class="row">
@@ -74,6 +84,7 @@
               <img class="card-img-top img-sized" [src]="movie.poster_path" />
               <div class="card-body">
                 <a
+                  [ngStyle]="{'font-size': fontSize + 'px'}"
                   href="#"
                   class="card-text"
                   data-toggle="modal"
@@ -89,4 +100,3 @@
     </div>
   </div>
 </nav>
-
