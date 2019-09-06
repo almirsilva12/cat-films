@@ -17,6 +17,37 @@
   height: 18em;
 }
 
+.card-scroll {
+  position: absolute;
+}
+
+.scroll-right {
+  float: right;
+  height: 18em;
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
+
+  .icon {
+    color: white;
+    font-size: 5em;
+  }
+}
+
+.scroll-left {
+  float: left;
+  height: 18em;
+  z-index: 2;
+  position: absolute;
+  white-space: nowrap;
+
+  .icon {
+    color: white;
+    font-size: 5em;
+  }
+}
+
 .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -46,6 +77,21 @@
   }
 
   &::-webkit-scrollbar {
-    display: none;
+    display: flex;
+    background: #f1f1f100;
+  }
+  &::-webkit-scrollbar-track {
+    margin-top: 3px;
+    background: rgb(218, 218, 218);
+    border-radius: 10px
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(168, 168, 168);
+    border-radius: 10px
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(119, 119, 119);
   }
 }

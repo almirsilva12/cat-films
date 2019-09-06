@@ -11,6 +11,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RatingModule, CollapseModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     InfiniteScrollModule,
     RatingModule,
     FormsModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

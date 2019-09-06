@@ -19,11 +19,10 @@
         aria-expanded="false"
         aria-label="Ocultar filtros"
       >
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <i class="fa fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
+        <div class="col-md-6"></div>
         <form class="form-inline">
           <input
             class="form-control mr-sm-2"
@@ -39,21 +38,43 @@
           >
             Pesquisar
           </button>
+        </form>
+        <div class="accessible-menu float-right">
+          <span class="navbar-text">Acessibilidade</span>
           <button
             type="button"
+            aria-hidden="true"
             class="btn btn-outline-primary"
             (click)="changeFontSize('+')"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Aumentar o tamanho da fonte"
           >
-            +
+            <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
           <button
             type="button"
+            aria-hidden="true"
             class="btn btn-outline-danger"
             (click)="changeFontSize('-')"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Diminuir o tamanho da fonte"
           >
-            -
+            <i class="fa fa-minus" aria-hidden="true"></i>
           </button>
-        </form>
+          <button
+            type="button"
+            aria-hidden="true"
+            class="btn btn-outline-secondary"
+            (click)="changeFontSize('=')"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Restaurar o tamanho da fonte"
+          >
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -64,7 +85,7 @@
         [isAnimated]="true"
       >
         <br />
-        <h4>
+        <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">
           Resultados de pesquisa para: {{ search }}
           <button type="button" class="close" (click)="closeSearch()">
             <span aria-hidden="true">&times;</span>
@@ -84,7 +105,7 @@
               <img class="card-img-top img-sized" [src]="movie.poster_path" />
               <div class="card-body">
                 <a
-                  [ngStyle]="{'font-size': fontSize + 'px'}"
+                  [ngStyle]="{ 'font-size': fontSize + 'px' }"
                   href="#"
                   class="card-text"
                   data-toggle="modal"

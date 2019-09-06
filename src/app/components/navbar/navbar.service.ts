@@ -9,7 +9,8 @@ export class NavbarService {
 
   url = 'https://api.themoviedb.org/3/';
   apiKey = 'api_key=c6840fc358a1b989c04221e823e583d3';
-  private fs = new Subject<any>();
+  private fontSize = new Subject<any>();
+  private titleSize = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -29,11 +30,19 @@ export class NavbarService {
   }
 
   getFontSize() {
-    return this.fs.asObservable();
+    return this.fontSize.asObservable();
   }
 
   sendFontSize(size) {
-    this.fs.next(size);
+    this.fontSize.next(size);
+  }
+
+  getTitleSize() {
+    return this.titleSize.asObservable();
+  }
+
+  sendTitleSize(size) {
+    this.titleSize.next(size);
   }
 }
 

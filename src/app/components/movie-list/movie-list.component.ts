@@ -1,7 +1,7 @@
 import { NavbarService } from './../navbar/navbar.service';
 import { MovieDetailsService } from './../movie-details/movie-details.service';
 import { Filme } from './../../classes/filme';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { MovieListService } from './movie-list.service';
 import { Genero } from 'src/app/classes/genero';
 import { Subscription } from 'rxjs';
@@ -18,13 +18,16 @@ export class MovieListComponent implements OnInit {
   genres: Genero[];
   movieDetailed: Filme;
   currentDate = new Date();
-  fontSize = 15;
+  fontSize;
   fontSizeSubscription: Subscription;
+  titleSize;
+  titleSizeSubscription: Subscription;
 
   constructor(
     public movieListService: MovieListService, public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
     this.loadGenres();
-    this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(mv => this.fontSize = mv);
+    this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
+    this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(size => this.titleSize = size);
   }
 
   ngOnInit() {
@@ -61,8 +64,12 @@ export class MovieListComponent implements OnInit {
         } else {
           mv.poster_path = this.imgUrl + mv.poster_path;
         }
+
+        mv.genre_ids.forEach(gr => {
+          gr = this.genres.find(el => el.id === gr);
+        });
       });
-      const item = this.genres.find(x => x.id === genre);
+      const item = this.genres.find(el => el.id === genre);
       if (page > 1) {
         movies.forEach(m => {
           item.movies.push(m);
@@ -79,5 +86,11 @@ export class MovieListComponent implements OnInit {
     } else {
       return date;
     }
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy() {
+    this.fontSizeSubscription.unsubscribe();
+    this.titleSizeSubscription.unsubscribe();
   }
 }

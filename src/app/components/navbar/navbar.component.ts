@@ -21,10 +21,12 @@ export class NavbarComponent implements OnInit {
   searchedMovies: Filme[];
   resultSearch = false;
   movieDetailed: Filme;
-  fontSize = 15;
+  titleSize = 18;
+  fontSize = 14;
   fontSizeSubscription: Subscription;
 
   ngOnInit() {
+    this.changeFontSize('=');
   }
 
   closeSearch() {
@@ -37,8 +39,18 @@ export class NavbarComponent implements OnInit {
   }
 
   changeFontSize(op) {
-    op === '+' ? this.fontSize++ : this.fontSize--;
+    if (op === '+') {
+      this.fontSize++;
+      this.titleSize++;
+    } else if (op === '-') {
+      this.fontSize--;
+      this.titleSize--;
+    } else if (op === '=') {
+      this.fontSize = 14;
+      this.titleSize = 18;
+    }
     this.navbarService.sendFontSize(this.fontSize);
+    this.navbarService.sendTitleSize(this.titleSize);
   }
 
   loadGenres() {

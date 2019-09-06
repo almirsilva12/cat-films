@@ -13,12 +13,15 @@ export class MovieDetailsComponent implements OnInit {
 
   movie: Filme;
   movieSubscription: Subscription;
-  fontSize = 15;
+  fontSize;
   fontSizeSubscription: Subscription;
+  titleSize;
+  titleSizeSubscription: Subscription;
 
   constructor(private movieDetailsService: MovieDetailsService, public navbarService: NavbarService) {
     this.movieSubscription = this.movieDetailsService.getMovie().subscribe(mv => this.movie = mv);
     this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(mv => this.fontSize = mv);
+    this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(mv => this.titleSize = mv);
   }
 
   ngOnInit() {
@@ -27,5 +30,7 @@ export class MovieDetailsComponent implements OnInit {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy() {
     this.movieSubscription.unsubscribe();
+    this.fontSizeSubscription.unsubscribe();
+    this.titleSizeSubscription.unsubscribe();
   }
 }
