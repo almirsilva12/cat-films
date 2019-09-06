@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   nullImgUrl = 'assets/img/no-poster.jpg';
   imgUrl = 'https://image.tmdb.org/t/p/w780';
   genres;
-  search;
+  search = '';
   searchedMovies: Filme[];
   resultSearch = false;
   movieDetailed: Filme;
