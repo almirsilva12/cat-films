@@ -12,13 +12,15 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RatingModule, CollapseModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
     NavbarComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserAnimationsModule,
