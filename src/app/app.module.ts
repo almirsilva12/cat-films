@@ -2,23 +2,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainPageComponent } from './components/main-page/main-page.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { AppService } from './app.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RatingModule, CollapseModule } from 'ngx-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MovieListComponent,
+    NavbarComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    AccordionModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule,
+    RatingModule,
+    FormsModule,
+    CollapseModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

@@ -1,0 +1,63 @@
+<div
+  class="modal fade"
+  id="movieDetail"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="movieDetailLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ movie?.title }}</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row col-md-12">
+          <img
+            class="movie-poster col-sm-4 col-md-4 col-ls-4"
+            [src]="movie?.poster_path"
+          />
+          <br />
+          <h5 class="modal-title"></h5>
+          <div class="col-sm-8 col-md-8 col-ls-8">
+            <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">Sinopse</h4>
+            <p class="movie-text" [ngStyle]="{ 'font-size': fontSize + 'px' }">
+              {{
+                movie?.overview == ""
+                  ? "Sinopse indisponível para este filme."
+                  : movie?.overview
+              }}
+            </p>
+            <br />
+            <br />
+            <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">Nota</h4>
+            <rating
+              [ngModel]="movie?.vote_average"
+              [max]="10"
+              [readonly]="true"
+              value="movie.vote_average"
+            ></rating>
+            <br />
+            <br />
+            <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">
+              Data de lançamento
+            </h4>
+            <span
+              class="movie-text"
+              [ngStyle]="{ 'font-size': fontSize + 'px' }"
+              >{{ movie?.release_date | date: "dd/MM/yyyy" }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

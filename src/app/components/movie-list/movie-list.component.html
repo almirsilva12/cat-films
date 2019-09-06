@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+
+  <body>
+    <div class="grid-body">
+      <div class=" col-sm-12 col-md-12 col-ls-12">
+        <div *ngFor="let genre of genres">
+          <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">
+            {{ genre.name }}
+          </h4>
+          <div class="card-group">
+            <div
+              id="{{ genre.id }}"
+              class="scrolling-wrapper"
+              infiniteScroll
+              [infiniteScrollUpDistance]="2"
+              [scrollWindow]="false"
+              [infiniteScrollThrottle]="600"
+              [horizontal]="true"
+              (scrolled)="onScroll(genre)"
+            >
+              <!-- <button class="card-scroll scroll-left  btn btn-default"><i class="fa fa-chevron-left icon"></i></button> -->
+              <div *ngFor="let movie of genre.movies" class="card">
+                <img class="card-img-top img-sized" [src]="movie.poster_path" />
+                <div class="card-body">
+                  <h5
+                    class="card-title"
+                    [ngStyle]="{ 'font-size': titleSize + 'px' }"
+                  >
+                    {{ movie.title }}
+                  </h5>
+                  <a
+                    [ngStyle]="{ 'font-size': fontSize + 'px' }"
+                    href="#"
+                    class="card-link"
+                    data-toggle="modal"
+                    data-target="#movieDetail"
+                    (click)="detailMovie(movie)"
+                    >Detalhes</a
+                  >
+                </div>
+              </div>
+              <!-- <button class="card-scroll scroll-right btn btn-default" (click)="scrollRight(genre.id)"><i class="fa fa-chevron-right icon"></i></button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
