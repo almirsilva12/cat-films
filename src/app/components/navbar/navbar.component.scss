@@ -57,6 +57,12 @@
   }
 
   &::-webkit-scrollbar {
-    display: none;
+    display: flex;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    display: flex;
+    background-color: rgb(145, 145, 145);
+    border-radius: 25px;
   }
 }

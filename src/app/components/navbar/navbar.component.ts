@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   imgUrl = 'https://image.tmdb.org/t/p/w780';
   genres;
   search = '';
+  searched = '';
   searchedMovies: Filme[];
   resultSearch = false;
   movieDetailed: Filme;
@@ -67,6 +68,7 @@ export class NavbarComponent implements OnInit {
   }
 
   searchMovie() {
+    this.searched = this.search;
     return this.navbarService.getMoviesBySearch(this.search, 'pt-BR', 1).subscribe((data) => {
       console.log(data);
       const movies = data.results;

@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   <div class="col-sm-12 col-md-12 col-xs-12">
     <div class="row">
-      <a class="navbar-brand">Catálogo de filmes</a>
+      <h5 class="navbar-brand">Catálogo de filmes</h5>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
         aria-controls="navbarContent" aria-expanded="false" aria-label="Ocultar filtros">
         <i class="fa fa-bars"></i>
@@ -40,7 +40,7 @@
       <div id="collapseBasic" class="search-results" [collapse]="!resultSearch" [isAnimated]="true">
         <br />
         <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">
-          Resultados de pesquisa para: {{ search }}
+          Resultados de pesquisa para: {{ searched }}
           <button type="button" class="close" (click)="closeSearch()">
             <span aria-hidden="true">&times;</span>
           </button>

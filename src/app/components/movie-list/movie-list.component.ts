@@ -27,15 +27,16 @@ export class MovieListComponent implements OnInit {
 
   constructor(private datePipe: DatePipe, public movieListService: MovieListService,
               public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
-              this.loadGenres();
-              this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
-              this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(size => this.titleSize = size);
+                this.loadGenres();
+                this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
+                this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(size => this.titleSize = size);
   }
 
   ngOnInit() {
   }
 
   scroll(i: number, dir: string) {
+    // @ts-ignore
     const elementRefs: Array<any> = this.widgetsContent.toArray();
     if (dir === 'right') {
       elementRefs[i].nativeElement.scrollTo({
@@ -92,14 +93,6 @@ export class MovieListComponent implements OnInit {
         item.movies = movies;
       }
     });
-  }
-
-  dateFormatter(date) {
-    if (date.length === 1) {
-      return '0' + date;
-    } else {
-      return date;
-    }
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
