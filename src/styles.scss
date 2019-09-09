@@ -20,6 +20,10 @@ body {padding: 30px; position: relative}
   background: black !important;
   color: white !important;
 }
+.contrast nav {
+  border-bottom: 1px solid white;
+}
+
 .contrast h1,
 .contrast h2,
 .contrast h3,
@@ -37,7 +41,6 @@ body {padding: 30px; position: relative}
   color: yellow !important;
   border: 1px solid yellow !important;
 }
-
 .contrast input {
   background:black !important;
   border: 1px solid white !important;
