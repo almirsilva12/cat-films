@@ -27,9 +27,9 @@ export class MovieListComponent implements OnInit {
 
   constructor(private datePipe: DatePipe, public movieListService: MovieListService,
               public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
-                this.loadGenres();
-                this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
-                this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(size => this.titleSize = size);
+              this.loadGenres();
+              this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
+              this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(size => this.titleSize = size);
   }
 
   ngOnInit() {

@@ -1,15 +1,15 @@
 .movie-card {
-  width: 400px;
-  max-width: 400px;
+  width: 200px;
+  max-width: 200px;
 }
 
 .movie-poster {
-  max-width: 18em;
+  max-width: 14em;
 }
 
 .img-sized {
   width: 100%;
-  height: 18em;
+  height: 14em;
 }
 
 .card-scroll {
@@ -20,7 +20,7 @@
 
 .scroll-right {
   float: right;
-  height: 18em;
+  height: 14em;
   z-index: 2;
   position: absolute;
   right: 2rem;
@@ -34,7 +34,7 @@
 
 .scroll-left {
   float: left;
-  height: 18em;
+  height: 14em;
   z-index: 2;
   position: absolute;
   white-space: nowrap;
