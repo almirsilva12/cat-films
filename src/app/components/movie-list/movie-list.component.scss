@@ -1,97 +1,11 @@
-.grid-body {
-  width: 100%;
-  padding: 0%;
-}
+
 
 .movie-card {
-  width: 400px;
-  max-width: 400px;
+  width: 200px;
+  max-width: 200px;
 }
 
 .movie-poster {
-  max-width: 18em;
+  max-width: 10em;
 }
 
-.img-sized {
-  width: 100%;
-  height: 18em;
-}
-
-.card-scroll {
-  position: absolute;
-}
-
-.scroll-right {
-  float: right;
-  height: 18em;
-  z-index: 2;
-  position: absolute;
-  right: 0;
-  white-space: nowrap;
-
-  .icon {
-    color: white;
-    font-size: 5em;
-  }
-}
-
-.scroll-left {
-  float: left;
-  height: 18em;
-  z-index: 2;
-  position: absolute;
-  white-space: nowrap;
-
-  .icon {
-    color: white;
-    font-size: 5em;
-  }
-}
-
-.scrolling-wrapper {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  max-height: 600px;
-
-  .card {
-    display: inline-block;
-    max-width: 12em;
-  }
-
-  .card-title {
-    white-space: normal;
-    height: 3em;
-    line-height: 1em;
-    text-overflow: ellipsis;
-    display: block;
-    overflow: scroll;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  .card-body {
-    padding: 1rem;
-  }
-
-  &::-webkit-scrollbar {
-    display: flex;
-    background: #f1f1f100;
-  }
-  &::-webkit-scrollbar-track {
-    margin-top: 3px;
-    background: rgb(218, 218, 218);
-    border-radius: 10px
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgb(168, 168, 168);
-    border-radius: 10px
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgb(119, 119, 119);
-  }
-}

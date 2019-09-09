@@ -12,6 +12,15 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RatingModule, CollapseModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { DatePipe } from '@angular/common';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+ 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 @NgModule({
   declarations: [
@@ -29,9 +38,14 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     RatingModule,
     FormsModule,
     CollapseModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    SwiperModule
   ],
-  providers: [AppService],
+  providers: [AppService, DatePipe, 
+    {
+    provide: SWIPER_CONFIG,
+    useValue: DEFAULT_SWIPER_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
