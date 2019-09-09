@@ -15,7 +15,7 @@
             {{ movie.title }}
           </h5>
           <a [ngStyle]="{ 'font-size': fontSize + 'px' }" href="#" class="card-link" data-toggle="modal"
-            data-target="#movieDetail" (click)="detailMovie(movie)">Detalhes</a>
+            data-target="#movieDetail" aria-label="Detalhes do filme" (click)="detailMovie(movie)">Detalhes</a>
         </div>
       </div>
       <button class="card-scroll scroll-right btn btn-default" (click)="scroll(i, 'right')"><i

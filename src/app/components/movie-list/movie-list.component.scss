@@ -75,20 +75,5 @@
 
   &::-webkit-scrollbar {
     display: none;
-    background: #f1f1f100;
-  }
-  &::-webkit-scrollbar-track {
-    margin-top: 3px;
-    background: rgb(218, 218, 218);
-    border-radius: 10px
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgb(168, 168, 168);
-    border-radius: 10px
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgb(119, 119, 119);
   }
 }
