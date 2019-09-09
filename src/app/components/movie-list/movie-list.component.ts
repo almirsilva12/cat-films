@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { MovieListService } from './movie-list.service';
 import { Genero } from 'src/app/classes/genero';
 import { Subscription } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-movie-list',
@@ -23,7 +24,7 @@ export class MovieListComponent implements OnInit {
   titleSize;
   titleSizeSubscription: Subscription;
 
-  constructor(
+  constructor(private datePipe: DatePipe,
     public movieListService: MovieListService, public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
     this.loadGenres();
     this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
@@ -54,8 +55,7 @@ export class MovieListComponent implements OnInit {
 
   loadMoviesByGenre(page, genre) {
     let movies = [];
-    const stringDate = this.currentDate.getFullYear().toString() + '-' +
-    this.dateFormatter(this.currentDate.getMonth().toString()) + '-' + this.dateFormatter(this.currentDate.getDay().toString());
+    const stringDate = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd')
     return this.movieListService.getMoviesByGenre('pt-BR', page, genre, stringDate).subscribe((data) => {
       movies = data.results;
       movies.forEach(mv => {

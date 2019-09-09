@@ -12,6 +12,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RatingModule, CollapseModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     CollapseModule.forRoot(),
     AngularFontAwesomeModule
   ],
-  providers: [AppService],
+  providers: [AppService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

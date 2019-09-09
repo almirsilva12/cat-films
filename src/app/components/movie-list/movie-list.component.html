@@ -15,7 +15,7 @@
           [horizontal]="true"
           (scrolled)="onScroll(genre)"
         >
-          <!-- <button class="card-scroll scroll-left  btn btn-default"><i class="fa fa-chevron-left icon"></i></button> -->
+          <button class="card-scroll scroll-left  btn btn-default"><i class="fa fa-chevron-left icon"></i></button>
           <div *ngFor="let movie of genre.movies" class="card">
             <img class="card-img-top img-sized" [src]="movie.poster_path" />
             <div class="card-body">
@@ -36,7 +36,7 @@
               >
             </div>
           </div>
-          <!-- <button class="card-scroll scroll-right btn btn-default" (click)="scrollRight(genre.id)"><i class="fa fa-chevron-right icon"></i></button> -->
+          <button class="card-scroll scroll-right btn btn-default" (click)="scrollRight(genre.id)"><i class="fa fa-chevron-right icon"></i></button>
         </div>
       </div>
     </div>
