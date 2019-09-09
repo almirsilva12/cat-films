@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  <div class="col-md-12">
+  <div class="col-sm-12 col-md-12 col-xs-12">
     <div class="row">
       <a class="navbar-brand">Catálogo de filmes</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
@@ -14,26 +14,26 @@
           <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchMovie()" [disabled]="search == ''">
             Pesquisar
           </button>
+          <div class="accessible-menu">
+            <span class="navbar-text">Acessibilidade</span>
+            <button type="button" aria-hidden="true" class="btn btn-outline-primary" (click)="changeFontSize('+')"
+              data-toggle="tooltip" data-placement="bottom" title="Aumentar o tamanho da fonte">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-hidden="true" class="btn btn-outline-danger" (click)="changeFontSize('-')"
+              data-toggle="tooltip" data-placement="bottom" title="Diminuir o tamanho da fonte">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-hidden="true" class="btn btn-outline-secondary" (click)="changeFontSize('=')"
+              data-toggle="tooltip" data-placement="bottom" title="Restaurar o tamanho da fonte">
+              <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-hidden="true" class="btn btn-outline-warning" (click)="changeContrastMode()"
+              data-toggle="tooltip" data-placement="bottom" title="Habilitar modo de alto contraste">
+              <i class="fa fa-adjust" aria-hidden="true"></i>
+            </button>
+          </div>
         </form>
-        <div class="accessible-menu float-right">
-          <span class="navbar-text">Acessibilidade</span>
-          <button type="button" aria-hidden="true" class="btn btn-outline-primary" (click)="changeFontSize('+')"
-            data-toggle="tooltip" data-placement="bottom" title="Aumentar o tamanho da fonte">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </button>
-          <button type="button" aria-hidden="true" class="btn btn-outline-danger" (click)="changeFontSize('-')"
-            data-toggle="tooltip" data-placement="bottom" title="Diminuir o tamanho da fonte">
-            <i class="fa fa-minus" aria-hidden="true"></i>
-          </button>
-          <button type="button" aria-hidden="true" class="btn btn-outline-secondary" (click)="changeFontSize('=')"
-            data-toggle="tooltip" data-placement="bottom" title="Restaurar o tamanho da fonte">
-            <i class="fa fa-refresh" aria-hidden="true"></i>
-          </button>
-          <button type="button" aria-hidden="true" class="btn btn-outline-warning" (click)="changeContrastMode()"
-            data-toggle="tooltip" data-placement="bottom" title="Habilitar modo de alto contraste">
-            <i class="fa fa-adjust" aria-hidden="true"></i>
-          </button>
-        </div>
       </div>
     </div>
     <div class="row">
