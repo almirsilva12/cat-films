@@ -1,81 +1,43 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  <div class="col-md-12">
+  <div class="col-sm-12 col-md-12 col-xs-12">
     <div class="row">
       <a class="navbar-brand">Catálogo de filmes</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarContent"
-        aria-controls="navbarContent"
-        aria-expanded="false"
-        aria-label="Ocultar filtros"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Ocultar filtros">
         <i class="fa fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
         <div class="col-md-6"></div>
         <form class="form-inline">
-          <input
-            class="form-control mr-sm-2"
-            [(ngModel)]="search"
-            [ngModelOptions]="{ standalone: true }"
-            type="search"
-            placeholder="Pesquisar por nome"
-            aria-label="search"
-          />
-          <button
-            class="btn btn-outline-success my-2 my-sm-0"
-            (click)="searchMovie()" [disabled]="search == ''"
-          >
+          <input class="form-control mr-sm-2" [(ngModel)]="search" [ngModelOptions]="{ standalone: true }" type="search"
+            placeholder="Pesquisar por nome" aria-label="search" />
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchMovie()" [disabled]="search == ''">
             Pesquisar
           </button>
+          <div class="accessible-menu">
+            <span class="navbar-text">Acessibilidade</span>
+            <button type="button" aria-hidden="true" class="btn btn-outline-primary" (click)="changeFontSize('+')"
+              data-toggle="tooltip" data-placement="bottom" title="Aumentar o tamanho da fonte">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-hidden="true" class="btn btn-outline-danger" (click)="changeFontSize('-')"
+              data-toggle="tooltip" data-placement="bottom" title="Diminuir o tamanho da fonte">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-hidden="true" class="btn btn-outline-secondary" (click)="changeFontSize('=')"
+              data-toggle="tooltip" data-placement="bottom" title="Restaurar o tamanho da fonte">
+              <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-hidden="true" class="btn btn-outline-warning" (click)="changeContrastMode()"
+              data-toggle="tooltip" data-placement="bottom" title="Habilitar modo de alto contraste">
+              <i class="fa fa-adjust" aria-hidden="true"></i>
+            </button>
+          </div>
         </form>
-        <div class="accessible-menu float-right">
-          <span class="navbar-text">Acessibilidade</span>
-          <button
-            type="button"
-            aria-hidden="true"
-            class="btn btn-outline-primary"
-            (click)="changeFontSize('+')"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="Aumentar o tamanho da fonte"
-          >
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </button>
-          <button
-            type="button"
-            aria-hidden="true"
-            class="btn btn-outline-danger"
-            (click)="changeFontSize('-')"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="Diminuir o tamanho da fonte"
-          >
-            <i class="fa fa-minus" aria-hidden="true"></i>
-          </button>
-          <button
-            type="button"
-            aria-hidden="true"
-            class="btn btn-outline-secondary"
-            (click)="changeFontSize('=')"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="Restaurar o tamanho da fonte"
-          >
-            <i class="fa fa-refresh" aria-hidden="true"></i>
-          </button>
-        </div>
       </div>
     </div>
     <div class="row">
-      <div
-        id="collapseBasic"
-        class="search-results"
-        [collapse]="!resultSearch"
-        [isAnimated]="true"
-      >
+      <div id="collapseBasic" class="search-results" [collapse]="!resultSearch" [isAnimated]="true">
         <br />
         <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">
           Resultados de pesquisa para: {{ search }}
@@ -85,26 +47,13 @@
         </h4>
 
         <div class="card-group">
-          <div
-            class="scrolling-wrapper"
-            infiniteScroll
-            [infiniteScrollUpDistance]="2"
-            [scrollWindow]="false"
-            [infiniteScrollThrottle]="600"
-            [horizontal]="true"
-          >
+          <div class="scrolling-wrapper" infiniteScroll [infiniteScrollUpDistance]="2" [scrollWindow]="false"
+            [infiniteScrollThrottle]="600" [horizontal]="true">
             <div *ngFor="let movie of searchedMovies" class="card">
               <img class="card-img-top img-sized" [src]="movie.poster_path" />
               <div class="card-body">
-                <a
-                  [ngStyle]="{ 'font-size': fontSize + 'px' }"
-                  href="#"
-                  class="card-text"
-                  data-toggle="modal"
-                  data-target="#movieDetail"
-                  (click)="detailMovie(movie)"
-                  >{{ movie.title }}</a
-                >
+                <a [ngStyle]="{ 'font-size': fontSize + 'px' }" href="#" class="card-text" data-toggle="modal"
+                  data-target="#movieDetail" (click)="detailMovie(movie)">{{ movie.title }}</a>
               </div>
             </div>
           </div>

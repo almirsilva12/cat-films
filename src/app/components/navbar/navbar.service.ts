@@ -11,6 +11,7 @@ export class NavbarService {
   apiKey = 'api_key=c6840fc358a1b989c04221e823e583d3';
   private fontSize = new Subject<any>();
   private titleSize = new Subject<any>();
+  private contrastMode = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -43,6 +44,14 @@ export class NavbarService {
 
   sendTitleSize(size) {
     this.titleSize.next(size);
+  }
+
+  getContrastMode() {
+    return this.contrastMode.asObservable();
+  }
+
+  sendContrastMode(cont) {
+    this.contrastMode.next(cont);
   }
 }
 

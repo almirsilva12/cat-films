@@ -10,9 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  constructor(public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
-    this.loadGenres();
-  }
+  constructor(public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {}
 
   nullImgUrl = 'assets/img/no-poster.jpg';
   imgUrl = 'https://image.tmdb.org/t/p/w780';
@@ -23,7 +21,9 @@ export class NavbarComponent implements OnInit {
   movieDetailed: Filme;
   titleSize = 18;
   fontSize = 14;
+  highContrastMode = false;
   fontSizeSubscription: Subscription;
+  highContrastSubscription: Subscription;
 
   ngOnInit() {
     this.changeFontSize('=');
@@ -38,25 +38,32 @@ export class NavbarComponent implements OnInit {
     this.movieDetailsService.sendMovie(movie);
   }
 
+  changeContrastMode() {
+    this.highContrastMode = !this.highContrastMode;
+    if (this.highContrastMode) {
+      this.navbarService.sendContrastMode(true);
+    } else {
+      this.navbarService.sendContrastMode(false);
+    }
+  }
+
   changeFontSize(op) {
     if (op === '+') {
-      this.fontSize++;
-      this.titleSize++;
+      if (this.fontSize < 22) {
+        this.fontSize++;
+        this.titleSize++;
+      }
     } else if (op === '-') {
-      this.fontSize--;
-      this.titleSize--;
+      if (this.fontSize > 8) {
+        this.fontSize--;
+        this.titleSize--;
+      }
     } else if (op === '=') {
       this.fontSize = 14;
       this.titleSize = 18;
     }
     this.navbarService.sendFontSize(this.fontSize);
     this.navbarService.sendTitleSize(this.titleSize);
-  }
-
-  loadGenres() {
-    return this.navbarService.getGenres('pt-BR').subscribe((data) => {
-      this.genres = data.genres;
-    });
   }
 
   searchMovie() {
