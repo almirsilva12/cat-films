@@ -29,6 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/high-contrast.scss",
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/font-awesome/scss/font-awesome.scss"
             ],
