@@ -23,7 +23,9 @@ export class NavbarComponent implements OnInit {
   movieDetailed: Filme;
   titleSize = 18;
   fontSize = 14;
+  highContrastMode = false;
   fontSizeSubscription: Subscription;
+  highContrastSubscription: Subscription;
 
   ngOnInit() {
     this.changeFontSize('=');
@@ -36,6 +38,15 @@ export class NavbarComponent implements OnInit {
 
   detailMovie(movie) {
     this.movieDetailsService.sendMovie(movie);
+  }
+
+  changeContrastMode() {
+    this.highContrastMode = !this.highContrastMode;
+    if (this.highContrastMode) {
+      this.navbarService.sendContrastMode(true);
+    } else {
+      this.navbarService.sendContrastMode(false);
+    }
   }
 
   changeFontSize(op) {
