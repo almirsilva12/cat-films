@@ -19,19 +19,33 @@ export class MovieListComponent implements OnInit {
   genres: Genero[];
   movieDetailed: Filme;
   currentDate = new Date();
-  fontSize;
+  fontSize: number;
   fontSizeSubscription: Subscription;
-  titleSize;
+  titleSize: number;
   titleSizeSubscription: Subscription;
+  @ViewChildren('widgetsContent') public widgetsContent: ElementRef<any>;
 
-  constructor(private datePipe: DatePipe,
-    public movieListService: MovieListService, public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
-    this.loadGenres();
-    this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
-    this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(size => this.titleSize = size);
+  constructor(private datePipe: DatePipe, public movieListService: MovieListService,
+              public navbarService: NavbarService, public movieDetailsService: MovieDetailsService) {
+              this.loadGenres();
+              this.fontSizeSubscription = this.navbarService.getFontSize().subscribe(size => this.fontSize = size);
+              this.titleSizeSubscription = this.navbarService.getTitleSize().subscribe(size => this.titleSize = size);
   }
 
   ngOnInit() {
+  }
+
+  scroll(i: number, dir: string) {
+    const elementRefs: Array<any> = this.widgetsContent.toArray();
+    if (dir === 'right') {
+      elementRefs[i].nativeElement.scrollTo({
+        left: (elementRefs[i].nativeElement.scrollLeft + 1500), behavior: 'smooth'
+      });
+    } else {
+      elementRefs[i].nativeElement.scrollTo({
+        left: (elementRefs[i].nativeElement.scrollLeft - 1500), behavior: 'smooth'
+      });
+    }
   }
 
   onScroll(genre) {
@@ -55,7 +69,7 @@ export class MovieListComponent implements OnInit {
 
   loadMoviesByGenre(page, genre) {
     let movies = [];
-    const stringDate = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd')
+    const stringDate = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
     return this.movieListService.getMoviesByGenre('pt-BR', page, genre, stringDate).subscribe((data) => {
       movies = data.results;
       movies.forEach(mv => {

@@ -2,7 +2,7 @@
 
 /* You can add global styles to this file, and also import other style files */
 body {padding: 30px; position: relative}
-        
+
     .card.customClass,
 .card.customClass .card-header,
 .panel.customClass {
@@ -11,4 +11,48 @@ body {padding: 30px; position: relative}
 }
 .panel.customClass .panel-body {
   background-color: #337aa7;
+}
+
+// CAMPOS
+.contrast,
+.contrast nav,
+.contrast div {
+  background: black !important;
+  color: white !important;
+}
+.contrast h1,
+.contrast h2,
+.contrast h3,
+.contrast h4,
+.contrast h5,
+.contrast p,
+.contrast span {
+    color: white !important;
+}
+.contrast a{
+  color: yellow !important;
+}
+.contrast button {
+  background: black !important;
+  color: yellow !important;
+  border: 1px solid yellow !important;
+}
+
+.contrast input {
+  background:black !important;
+  border: 1px solid white !important;
+  color: white !important;
+}
+.contrast .scrolling-wrapper .card {
+  border: 1px solid white !important;
+}
+.contrast .card-scroll {
+  border: none !important;
+  background: transparent !important;
+  .icon {
+    color: yellow !important;
+  }
+}
+.contrast .modal-dialog {
+  border: 1px solid white;
 }
