@@ -1,13 +1,17 @@
+<!-- loop de gêneros -->
 <div *ngFor="let genre of genres; let i = index">
   <br>
   <h4 [ngStyle]="{ 'font-size': titleSize + 'px' }">
     {{ genre.name }}
   </h4>
+  <!-- grupo de cards de filmes do gênero -->
   <div class="card-group">
+    <!-- div onde os cards são carregados com scroll infinito -->
     <div id="{{ genre.id }}" #widgetsContent class="scrolling-wrapper" infiniteScroll [infiniteScrollUpDistance]="2"
       [scrollWindow]="false" [infiniteScrollThrottle]="600" [horizontal]="true" (scrolled)="onScroll(genre)">
       <button class="card-scroll scroll-left btn btn-default" (click)="scroll(i, 'left')"><i
           class="fa fa-chevron-left icon"></i></button>
+      <!-- loop de cards -->
       <div *ngFor="let movie of genre.movies" class="card">
         <img class="card-img-top img-sized" [src]="movie.poster_path" />
         <div class="card-body">
@@ -15,7 +19,8 @@
             {{ movie.title }}
           </h5>
           <a [ngStyle]="{ 'font-size': fontSize + 'px' }" href="#" class="card-link" data-toggle="modal"
-            data-target="#movieDetail" aria-label="Detalhes do filme" (click)="detailMovie(movie)">Detalhes</a>
+            data-target="#movieDetail" attr.aria-label="Detalhes do filme {{movie.title}}"
+            (click)="detailMovie(movie)">Detalhes</a>
         </div>
       </div>
       <button class="card-scroll scroll-right btn btn-default" (click)="scroll(i, 'right')"><i

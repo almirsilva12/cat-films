@@ -49,12 +49,12 @@ export class MovieListComponent implements OnInit {
     }
   }
 
-  onScroll(genre) {
+  onScroll(genre: Genero) {
     genre.pageNumber += 1;
     this.loadMoviesByGenre(genre.pageNumber, genre.id);
   }
 
-  detailMovie(movie) {
+  detailMovie(movie: Filme) {
     this.movieDetailsService.sendMovie(movie);
   }
 
@@ -68,10 +68,10 @@ export class MovieListComponent implements OnInit {
     });
   }
 
-  loadMoviesByGenre(page, genre) {
+  loadMoviesByGenre(page: number, idGenre: number) {
     let movies = [];
     const stringDate = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
-    return this.movieListService.getMoviesByGenre('pt-BR', page, genre, stringDate).subscribe((data) => {
+    return this.movieListService.getMoviesByGenre('pt-BR', page, idGenre, stringDate).subscribe((data) => {
       movies = data.results;
       movies.forEach(mv => {
         if (mv.poster_path === null) {
@@ -84,7 +84,7 @@ export class MovieListComponent implements OnInit {
           gr = this.genres.find(el => el.id === gr);
         });
       });
-      const item = this.genres.find(el => el.id === genre);
+      const item = this.genres.find(el => el.id === idGenre);
       if (page > 1) {
         movies.forEach(m => {
           item.movies.push(m);

@@ -5,12 +5,10 @@
 .movie-poster {
   max-width: 15rem;
   box-align: center;
+  box-shadow: 3px 3px 7px rgb(146, 146, 146);
 }
 
 .movie-info {
   max-width: 40rem;
 }
 
-.movie-text {
-  font-size: var(--font-size);
-}

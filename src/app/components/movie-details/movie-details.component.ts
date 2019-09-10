@@ -13,9 +13,9 @@ export class MovieDetailsComponent implements OnInit {
 
   movie: Filme;
   movieSubscription: Subscription;
-  fontSize;
+  fontSize: number;
   fontSizeSubscription: Subscription;
-  titleSize;
+  titleSize: number;
   titleSizeSubscription: Subscription;
 
   constructor(private movieDetailsService: MovieDetailsService, public navbarService: NavbarService) {
