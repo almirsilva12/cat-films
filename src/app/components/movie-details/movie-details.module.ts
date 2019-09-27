@@ -8,9 +8,6 @@ import { MovieDetailsService } from './movie-details.service';
   imports: [
     CommonModule
   ],
-  exports: [
-    MovieDetailsComponent
-  ],
   providers: [
     MovieDetailsService
   ]

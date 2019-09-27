@@ -8,10 +8,6 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule
-  ],
-  exports: [
-    NavbarService
   ]
-
 })
 export class NavbarModule { }
